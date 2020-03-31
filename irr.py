@@ -18,7 +18,10 @@ def from_irr(key, url=None):
 		return
 	soup = BeautifulSoup(html, 'lxml')
 	table = soup.find('div', class_='js-listingContainer')
-	items = table.find_all('div', class_='listing__item')
+	try:
+		items = table.find_all('div', class_='listing__item')
+	except AttributeError:
+		return
 	for item in items:
 		url = item.find('a', class_='listing__itemTitle').get('href')
 		title = item.find('div', class_='js-productListingProductName').text

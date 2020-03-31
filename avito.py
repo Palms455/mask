@@ -3,6 +3,7 @@ from write import write_csv
 import dateparser
 from datetime import datetime
 from connect import get_html
+#from reserv_connect import get_html
 
 	
 def from_avito(key, page=None):
@@ -11,6 +12,7 @@ def from_avito(key, page=None):
 	url = f'https://avito.ru/{key[0]}?s=104&q={key[1]}&p={page}'
 	html = get_html(url)
 	if html is None:
+		print('no html')
 		return
 	check = None
 	file = 'Aвито ' + key[0]
@@ -20,7 +22,6 @@ def from_avito(key, page=None):
 		item = i.find('h3', class_='snippet-title').find('a', class_='snippet-link')
 		url = 'https://www.avito.ru' + item.get("href")
 		title = item.text
-
 		date = i.find('div', class_='snippet-date-info').get('data-tooltip')
 		if (datetime.now() - dateparser.parse(date)).days <= 3:
 			data = {'url': url,'date': date, 'title': title}
@@ -34,4 +35,4 @@ def from_avito(key, page=None):
 		page += 1
 		return from_avito(key, page)
 
-from_avito(['ufa', 'маска'])
+

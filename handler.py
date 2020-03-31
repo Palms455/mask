@@ -4,6 +4,7 @@ from irr import from_irr
 from multiprocessing import Pool
 
 
+
 keywords = {
 	'Арбидол',
 	'ферон', 
@@ -40,7 +41,7 @@ regions = {
 		'tyumenskaya-obl',
 		'chelyabinsk',
 		'chelyabinskaya-obl',
-		''#moscow,
+		'moscow'#moscow,
 		}
 	}
 
@@ -60,9 +61,6 @@ irr = data_prepare(keywords, regions, 'youla')
 youla = data_prepare(keywords, regions, 'irr')
 
 
-
-#for item in avito:
-#	from_avito(item)
 
 if __name__ == '__main__':
 	with Pool(5) as p:
