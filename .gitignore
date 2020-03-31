@@ -5,6 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
+login_pass.py
 
 # Distribution / packaging
 .Python
