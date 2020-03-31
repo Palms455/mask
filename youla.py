@@ -1,31 +1,9 @@
-import requests
 from bs4 import BeautifulSoup
-from multiprocessing import Pool
-from ip_read import get_proxy_ip
 from write import write_csv
 import dateparser
 from datetime import datetime
+from connect import get_html
 
-
-
-
-
-def get_html(url):
-	headers = {
-	#'user-agent': ua.random,
-	}
-	p = get_proxy_ip('ip_request.txt')
-	proxy = { 'https' : p}
-	try:
-		r = requests.get(url, proxies=proxy, headers=headers)
-		print(r.status_code)
-	except:
-		print('bad request. retrying')
-		return get_html(url)
-	if r.status_code == 200:
-		print('ok')
-		return r.text
-	else: get_html(url)
 
 
 

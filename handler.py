@@ -61,14 +61,14 @@ youla = data_prepare(keywords, regions, 'irr')
 
 
 
-for item in avito:
-	from_avito(item)
+#for item in avito:
+#	from_avito(item)
 
-
-#with Pool(20) as p:
-#	#results1 = p.map(from_avito, avito)
-#	results2 = p.map(from_youla, youla)
-#	#results3 = p.map(from_irr, irr)
+if __name__ == '__main__':
+	with Pool(5) as p:
+		results1 = p.map(from_avito, avito)
+		results2 = p.map(from_youla, youla)
+		results3 = p.map(from_irr, irr)
 
 
 

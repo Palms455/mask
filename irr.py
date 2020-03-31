@@ -1,30 +1,10 @@
-import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 import dateparser
 from write import write_csv
-from ip_read import get_proxy_ip
+from connect import get_html
 
 
-
-def get_html(url):
-	headers = {
-	#'user-agent': ua.random,
-	}
-	p = get_proxy_ip('ip_request.txt')
-	proxy = { 'https' : p}
-	try:
-		r = requests.get(url, proxies=proxy, headers=headers)
-		print(r.status_code)
-	except:
-		print('bad request. retrying')
-		return get_html(url)
-	if r.status_code == 200:
-		print('ok')
-		return r.text
-	if r.status_code == 404:
-		return 
-	else: get_html(url)
 
 
 def from_irr(key, url=None):
