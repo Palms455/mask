@@ -32,6 +32,7 @@ regions = {
 		'chelyabinsk',
 		'moskva'
 		},
+
 	'irr' : {
 		'ufa',
 		'bashkortostan-resp',
@@ -41,7 +42,7 @@ regions = {
 		'tyumenskaya-obl',
 		'chelyabinsk',
 		'chelyabinskaya-obl',
-		'moscow'#moscow,
+		'moscow'
 		}
 	}
 
@@ -57,9 +58,8 @@ def data_prepare(keywords, regions, key):
 
 
 avito = data_prepare(keywords, regions, 'avito')
-irr = data_prepare(keywords, regions, 'youla')
-youla = data_prepare(keywords, regions, 'irr')
-
+irr = data_prepare(keywords, regions, 'irr')
+youla = data_prepare(keywords, regions, 'youla')
 
 
 if __name__ == '__main__':

@@ -17,6 +17,8 @@ def from_avito(key, page=None):
 	check = None
 	file = 'Aвито ' + key[0]
 	soup = BeautifulSoup(html, 'lxml')
+	if soup.find('div', class_='firewall-container'):
+		return from_avito(key, page)
 	items = soup.find_all('div', class_='item__line')
 	for i in items:
 		item = i.find('h3', class_='snippet-title').find('a', class_='snippet-link')

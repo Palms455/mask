@@ -8,6 +8,7 @@ from connect import get_html
 
 
 def from_youla(key, url = None):
+	print(key)
 	file = 'Юла ' + key[0]
 	check = None
 	if url is None:
@@ -15,7 +16,6 @@ def from_youla(key, url = None):
 	html = get_html(url)
 	soup = BeautifulSoup(html, 'lxml')
 	table = soup.find('ul', class_='product_list')
-	#print(table.encode('utf-8'))
 	try:
 		items = table.find_all('li')
 	except:
@@ -33,4 +33,3 @@ def from_youla(key, url = None):
 	if page_url and check:
 		from_youla(key, page_url)
 	return
-
