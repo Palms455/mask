@@ -3,6 +3,7 @@ from write import write_csv
 import dateparser
 from datetime import datetime
 from connect import get_html
+import time
 #from reserv_connect import get_html
 
 	
@@ -18,6 +19,7 @@ def from_avito(key, page=None):
 	file = 'Aвито ' + key[0]
 	soup = BeautifulSoup(html, 'lxml')
 	if soup.find('div', class_='firewall-container'):
+		print('ip adress is blocked')
 		return from_avito(key, page)
 	items = soup.find_all('div', class_='item__line')
 	for i in items:
@@ -29,6 +31,8 @@ def from_avito(key, page=None):
 			data = {'url': url,'date': date, 'title': title}
 			check = 1
 			write_csv(data, file)
+	time.sleep(4)
+
 	try:
 		page_count = soup.find('span', {"data-marker" : "pagination-button/next"}).find_previous_sibling('span').text
 	except:

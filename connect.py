@@ -24,7 +24,7 @@ def get_proxy():
 def get_html(url):
 
 	headers = {
-	'user-agent': ua.random,
+	#'user-agent': ua.random,
 	}
 	p = get_proxy() #{'schema': '' , 'adress': ''}
 	proxy = {p['schema']: p['adress']}

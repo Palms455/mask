@@ -24,7 +24,8 @@ regions = {
 		'tyumenskaya_oblast', 
 		'chelyabinskaya_oblast', 
 		'chelyabinsk', 
-		'moskva_i_mo'},
+		'moskva_i_mo'
+		},
 	'youla' : {
 		'ufa',
 		'ekaterinburg',
@@ -61,6 +62,9 @@ avito = data_prepare(keywords, regions, 'avito')
 irr = data_prepare(keywords, regions, 'irr')
 youla = data_prepare(keywords, regions, 'youla')
 
+
+#for item in avito:
+#	from_avito(item)
 
 if __name__ == '__main__':
 	with Pool(5) as p:
